@@ -38,7 +38,7 @@
 
 ## 4. 예약 실행 (Cron)
 - `CRON_SECRET` 을 임의의 긴 문자열로 설정. Vercel Cron 은 자동으로 `Authorization: Bearer <CRON_SECRET>` 을 보냅니다.
-- `vercel.json`: `/api/cron/publish` 5분마다, `/api/cron/insights` 6시간마다.
+- `vercel.json` 기본값은 Hobby 플랜에서도 배포되도록 **하루 1회**(UTC 00:00 = KST 09:00)입니다. Pro 플랜이면 publish 를 `*/5 * * * *` 로 바꾸세요.
 - **Vercel Hobby 플랜은 Cron 이 하루 1회로 제한**됩니다. Pro 플랜을 쓰거나 외부 스케줄러로 호출하세요. 예) GitHub Actions:
   ```yaml
   on: { schedule: [{ cron: "*/5 * * * *" }] }
